@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="UTF-8" />
+    <title>NASA APOD - Data de Nascimento</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <div class="container">
+      <h1>Imagem da NASA no dia do seu nascimento</h1>
+      <p class="subtitle">
+        Digite sua data de nascimento e veja qual era a imagem astronômica do dia.
+      </p>
+
+      <form id="birth-form">
+        <label for="birth-date">Data de nascimento</label>
+        <input type="date" id="birth-date" name="birth-date" required />
+        <button type="submit">Buscar imagem</button>
+      </form>
+
+      <div id="message" class="message"></div>
+
+      <div id="result" class="result hidden">
+        <h2 id="apod-title"></h2>
+        <p id="apod-date" class="apod-date"></p>
+        <div id="media-container" class="media-container"></div>
+        <p id="apod-explanation" class="apod-explanation"></p>
+      </div>
+    </div>
+
+    <script src="script.js"></script>
+  </body>
+  </html>
+
