@@ -2,8 +2,12 @@ import os
 from datetime import datetime
 
 import requests
+import urllib3
 from dotenv import load_dotenv
 from fastapi import FastAPI, HTTPException
+
+urllib3.disable_warnings(urllib3.exceptions.InsecureRequestWarning)
+
 from fastapi.middleware.cors import CORSMiddleware
 from fastapi.responses import JSONResponse
 
@@ -42,8 +46,9 @@ def get_apod_by_date(date: str):
     }
 
     try:
-        response = requests.get(APOD_URL, params=params, timeout=10)
-    except requests.RequestException:
+        response = requests.get(APOD_URL, params=params, timeout=10, verify=False)
+    except requests.RequestException as e:
+        print(f"Erro de conexão com a API: {e}")
         raise HTTPException(status_code=502, detail="Erro ao conectar na API da NASA.")
 
     if response.status_code != 200:
